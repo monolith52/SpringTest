@@ -1,0 +1,264 @@
+/*-------------------------
+文字設定
+--------------------------*/
+
+
+/*--------------------------------------------------------
+h1,2,3,4
+--------------------------------------------------------*/
+
+h1{
+}
+
+
+h2{
+	font-size: 11pt;
+	font-weight: bold;
+	color: #333333;
+}
+h2.title{
+	font-size: 14pt;
+	font-weight: bold;
+	color: #006933;
+	margin-bottom: 10px;
+}
+h2.title_blue{
+	clear: right;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #036EB8;
+}
+h2.title_single {
+	background-color: #f761a6;
+	padding: 10px;
+	clear: both;
+	line-height: 30px;
+  position: relative;
+}
+h2.title_single:before {
+    content: "";
+    display: inline-block;
+    border: 10px solid transparent;
+    border-top-color: #f761a6;
+    position: absolute;
+    left: 20px;
+    bottom: -20px;
+}
+
+h2.title_under {
+	font-size: 11pt;
+	font-weight: bold;
+	letter-spacing: 0em;
+	padding-left: 10px;
+	clear: both;
+	padding-top: 6px;
+	padding-bottom: 4px;
+	background-image: url(images/h2title_under.jpg);
+	background-repeat: repeat-x;
+	background-position: left top;
+	color: #FFF;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+}
+
+h2.title_small{
+	clear: both;
+	font-size: 11pt;
+	font-weight: bold;
+	color: #333333;
+	margin-bottom: 10px;
+	letter-spacing: 0.1em;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #1C903B;
+	line-height: 30px;
+	height: 30px;
+	background-image: url(images/h2title.gif);
+	background-repeat: no-repeat;
+	background-position: 0px center;
+	padding-left: 30px;
+}
+h2 a,
+h2 a:hover{
+	color: #000;
+	text-decoration: none;
+}
+h3{
+	font-size: 10pt;
+	font-weight: normal;
+	text-align: left;
+}
+h3.title_blue {
+	font-weight: bold;
+	font-size: 11pt;
+	clear: both;
+	padding-left: 10px;
+	padding-top: 7px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	background-color: #DFF0EB;
+	border-bottom-width: 5px;
+	border-bottom-style: solid;
+	border-bottom-color: #4699B9;
+}
+h3.title_line_blue {
+	font-weight: bold;
+	font-size: 11pt;
+	clear: both;
+	padding-left: 10px;
+	padding-top: 7px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	background-color: #000000;
+	border-bottom-width: 5px;
+	border-bottom-style: solid;
+	border-bottom-color: #4699B9;
+	color: #FFFFFF;
+}
+h3.big_title{
+	font-size: 12pt;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+h4 {
+	color: #F60;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #F60;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	clear: both;
+	padding-left: 20px;
+	background-image: url(images/li_details_beige.jpg);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+
+
+
+
+.b {	font-weight: bold;}
+.normal {	font-weight: normal ;}
+
+.white {	color: #FFF;}
+.gray {	color: #999;}
+.pink {	color: #e44482;}
+.red {
+	color: #F00;
+}
+.blue {
+	color: #0068B7;
+}
+.green {
+	color: #339933;
+}
+.orange {	color: #E85622;}
+.purple {	color: #7f44c4;}
+
+.big {
+	font-size: 120%;
+}
+.small {
+	font-size: 90%;
+	line-height: 16px;
+}
+.bg_gray {	background-color: #F2F2F2;}
+.bg_yellow {	background-color: #FFFF9D;}
+.bg_black {	background-color: #000;}
+.bg_orange {	background-color: #feebbb;}
+.bg_blue {	background-color: #EAF6FD;}
+.bg_pink {	background-color: #FDEFF5;}
+.bg_green {	background-color: #ccffcc;}
+.gold{
+	color: #a37523;
+}
+.day {
+	color: #F60;
+	background-color: #CCC;
+	padding-right: 2px;
+	padding-left: 2px;
+}
+.underline{
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #B3B3B3;
+}
+.key_txt{
+	line-height: 35px;
+	font-size: 90%;
+}
+.line_nounder{
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #808080;
+	border-right-color: #808080;
+	border-left-color: #808080;
+}
+.table_contact span.error{
+	color: #F00;
+}.date {
+	color: #F00;
+}
+
+.commentbox {
+	border: 1px solid #f761a6;
+	background-color: #FFFBEE;
+	padding: 10px;
+	clear: both;
+	margin-bottom: 20px;
+}
+
+/* 汎用テキストボタン　textbuttonとカラーを組み合わせて使います */
+.textbutton {
+	display: block;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	text-align: center;
+	cursor: pointer;
+	text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+	color: #FFF !important;
+}
+.textbutton:hover {
+	text-decoration: none;
+}
+
+.textbutton.black {
+	background: #454545;
+/* 	filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#595959, EndColorStr=#454545);
+	background: -moz-linear-gradient(top, #595959, #454545);
+	background: -webkit-gradient(linear, left top, left bottom, from(#595959), to(#454545));
+ */
+}
+input.textbutton.black {
+	border: 1px solid #454545;
+}
+
+.textbutton.pink {
+	background: #e85197;
+/* 	filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#f26f96, EndColorStr=#d94569);
+	background: -moz-linear-gradient(top, #f26f96, #d94569);
+	background: -webkit-gradient(linear, left top, left bottom, from(#f26f96), to(#d94569));
+ */
+}
+input.textbutton.pink {
+	border: 1px solid #e85197;
+}
+
+
+/* 検索ハイライト */
+.highlight {
+	background-color: #F9FF8F;
+}
+

@@ -1,0 +1,292 @@
+/*--------------------------------------------------------
+sidebar
+--------------------------------------------------------*/
+div#sidebar {
+	float: right;
+	width: 272px;
+}
+div#sidebar p.title {
+	font-size: 12pt;
+	clear: both;
+	padding-left: 70px;
+	height: 45px;
+	padding-top: 15px;
+	font-weight: bold;
+}
+div#sidebar .t_keyword,
+div#sidebar .t_keyword_hot {
+	background-image: url(images/sidebar_keyword_hot.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+div#sidebar .t_keyword_new {
+	background-image: url(images/sidebar_keyword_new.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+div#sidebar .t_tag {
+	background-image: url(images/sidebar_tag.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+div#sidebar .t_ranking {
+	background-image: url(images/sidebar_ranking.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+div#sidebar .t_dlcount {
+	background-image: url(images/sidebar_dlcount.gif);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	clear: both;
+	font-size: 12pt;
+	font-weight: bold;
+	height: 45px;
+	padding-right: 15px;
+	padding-left: 15px;
+	padding-top: 13px;
+}
+
+div#sidebar .box{
+	clear: both;
+	margin-bottom: 30px;
+	float: left;
+	border: 1px solid #808080;
+	background-color: #FFFFFF;
+	width: 270px;
+}
+div#sidebar .box_line{
+	clear: both;
+	margin-bottom: 20px;
+	float: left;
+	border: 1px solid #000000;
+}
+
+div#sidebar ul.keyword_list{
+	list-style-type: none;
+	padding-right: 5px;
+	padding-bottom: 10px;
+	clear: both;
+	padding-left: 10px;
+}
+
+
+
+.t_news {
+    font-size: 12pt;
+    height: 45px;
+    background: #f761a6;
+    box-sizing: content-box;
+    line-height: 45px;
+    position: relative;
+}
+h2.t_news:before {
+    content: "";
+    display: inline-block;
+    border: 10px solid transparent;
+    border-top-color: #111;
+    position: absolute;
+    left: 20px;
+    bottom: -20px;
+}
+.news-title {
+    font-family: Impact,Charcoal;
+    display: inline-block;
+    background: #111;
+    color: white;
+    padding: 0 10px;
+    margin-right: 10px;
+    font-weight: 100;
+    font-size: 13pt;
+}
+
+div#sidebar .news_list{
+	overflow-y: scroll;
+	height: 200px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+div#sidebar .news_list p {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #808080;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	margin-bottom: 10px;
+}
+
+
+ul.keyword_list li{
+	list-style-type: none;
+	display: block;
+	float: left;
+	width: 120px;
+	font-size: 9pt;
+	background-image: url(images/sidebar_li_keyword_list.png);
+	background-repeat: no-repeat;
+	background-position: 0px 3px;
+	height: 33px;
+	overflow: hidden;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	line-height: 15px;
+}
+ul.keyword_list li a{
+	padding-left: 15px;
+	padding-top: 3px;
+	display: block;
+	color: #333333;
+}
+ul.keyword_list li a:hover {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+div#sidebar ul.tag_list{
+	list-style-type: none;
+	clear: both;
+	padding-right: 5px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+}
+div#sidebar ul.tag_list li{
+	list-style-type: none;
+	display: block;
+	float: left;
+	width: 120px;
+	font-size: 9pt;
+	background-image: url(images/sidebar_li_tag_list.png);
+	background-repeat: no-repeat;
+	background-position: 0px 3px;
+	height: 33px;
+	overflow: hidden;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	line-height: 15px;
+}
+div#sidebar ul.tag_list li a{
+	padding-left: 15px;
+	padding-top: 3px;
+	display: block;
+	color: #333333;
+}
+div#sidebar ul.tag_list li a:hover {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+table.table_ranking{
+	width: 100%;
+}
+.table_ranking tr {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #808080;
+}
+.table_ranking th {
+	text-align: center;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	width: 30px;
+	font-size: 9pt;
+}
+.table_ranking td {
+	padding-top: 3px;
+	padding-right: 10px;
+	padding-bottom: 3px;
+	padding-left: 20px;
+}
+.rank{
+	background-image: url(images/rank.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.rank1{
+	background-image: url(images/rank1.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.rank2{
+	background-image: url(images/rank2.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.rank3{
+	background-image: url(images/rank3.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.exp_ranking {
+	text-align: right;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #929292;
+	font-size: 9pt;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+#sidebar a.b_link {
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	color: #FFF;
+	line-height: 30px;
+	background-color: #f761a6;
+	font-size: 10pt;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	clear: both;
+	margin-top: 10px;
+	margin-right: 15px;
+	margin-bottom: 10px;
+	margin-left: 15px;
+}
+#sidebar a.b_link:hover {
+	text-decoration: none;
+}
+
+p.banner{
+	clear: both;
+	margin-bottom: 30px;
+}
+
+/*アップロード完了*/
+div#sidebar_up {
+	width: 272px;
+	position: fixed;
+	right: 50px;
+	background-color: #FFFFFF;
+	padding: 10px;
+	border: 3px solid #808080;
+}
+div#sidebar_up .upload_thumb .over {
+}
+#sidebar .box .countbox {
+	text-align: center;
+	font-size: 11pt;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	font-weight: bold;
+}
+#sidebar .box .countbox .min {
+	font-size: 9pt;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-weight: normal;
+}
+#sidebar .box .countbox .over {
+	vertical-align: baseline;
+}
+#sidebar .box .rest_dl {
+	color: #e60012;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	font-size: 8pt;
+	line-height: 16px;
+}

@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+
+		<title th:text="${title}">ドロップブックス│同人誌を閲覧できる無料投稿サイト dropbooks</title>
+			<meta name="Keywords" content="同人誌,無料,成人コミック"/>
+			<meta name="Description" content="新作の同人誌や人気作の成人コミックを閲覧できる無料投稿サイト"/>
+			<link rel="alternate" media="only screen and (max-width: 640px)" href="http://dropbooks.tv/smart"/>
+			<meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:title" content="ドロップブックス│同人誌・成人コミックを閲覧できる無料投稿サイト"/>
+	<meta name="twitter:description" content="新作の同人誌や人気作の成人コミックを閲覧できる無料投稿サイト。"/>
+	<meta name="twitter:image" content="http://dropbooks.tv/img/thumb_twi.jpg"/>
+
+
+	
+
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css"/>
+<link rel="stylesheet" href="./index_files/styles.css" type="text/css" media="all"/>
+<script src="https://www.google-analytics.com/analytics.js"></script><script src="./index_files/jquery.min.js"></script>
+<script type="text/javascript" src="./index_files/smartRollover.js"></script>
+<script type="text/javascript" src="./index_files/jquery.page-scroller.js"></script>
+<script type="text/javascript" src="./index_files/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="./index_files/scrolltopcontrol.js"></script>
+<script type="text/javascript" src="./index_files/jcarousel.min.js"></script>
+<link rel="stylesheet" href="./index_files/jcarousel.css" type="text/css" media="all"/>
+
+
+	
+	
+
+<!--アクセス解析-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48093944-29', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!--/アクセス解析-->
+<style type="text/css">
+:root #header + #content > #left > #rlblock_left
+{ display: none !important; }</style></head>
+<body>
+
+
+
+<div id="container">
+
+	<div id="smart_link">
+		<a href="http://dropbooks.tv/smart/">スマートフォン版で表示</a>
+	</div>
+
+
+<!--header-->
+<div id="header">
+
+
+  <div id="header_inner">
+    <div class="member_menu">
+      <h1>ドロップブックスはエロ同人誌・漫画専用を自由に投稿・ダウンロードできる無料サイトです</h1>
+    </div>
+
+    <div id="header_logo">
+      <a href="http://dropbooks.tv/">
+        <img src="./index_files/logo.png" alt="ドロップブックスアダルト" width="360" height="80">
+      </a>
+    </div>
+
+    <div class="contents">
+<!--search-->
+      <div>
+        <form action="http://dropbooks.tv/search" method="post">
+				<p>
+					<input name="search_type" type="radio" value="and" id="and" checked="checked"/><label for="and">and検索</label>／
+					<input name="search_type" type="radio" value="or" id="or"/><label for="or">or検索</label>
+				</p>
+				<p class="header_search">
+					<input type="search" placeholder="検索文字を入れてください" class="search_box" name="word"/>
+					<input type="submit" value="" class="submitBtn"/>
+				</p>
+        </form>
+      </div>
+<!--search-->
+    </div>
+    <ul id="header_btn">
+      <li id="mybook"><a href="http://dropbooks.tv/mybook/" class="over">MY本棚を確認</a></li>
+      <li><a href="http://upload.dropbooks.tv/upload/"><img src="./index_files/upload.png" alt="アップロード" width="160" height="50" class="over"></a></li>
+    </ul>
+  </div>
+</div>
+<!--/header-->
+
+
+<!--
+<script type="text/javascript">
+$(function(){
+		var nav = $('#header'),
+		h = $("#header .member_menu"),
+		height = h.height();
+		var b_upload = $("#mybook").next("li").children("a");
+		b_upload_html = b_upload.html();
+		
+	$(window).scroll(function () {
+		if($(window).scrollTop() > height) {
+			nav.addClass("fixed");
+			b_upload.html("アップロード");
+		} else {
+			nav.removeClass("fixed");
+			b_upload.html(b_upload_html);
+		}
+	});
+});
+//スクロール時ヘッダーメニューのみ固定
+</script>
+-->
+
+
+
+
+
+
+
+<div id="wrap">
+	<div id="outline">
+
+<div id="main2col">
+
+
+
+
+
+
+<div class="sortbox">
+	<div class="sort_title">
+    <div class="allfile"><span class="all-file">全てのファイル件数</span>414809</div>
+        <h2>ファイル一覧(1/8297ページ)</h2>
+	</div>
+    <ul class="sort_list">
+
+
+    <form action="http://dropbooks.tv/" method="get">
+        並べ替え：
+            <select name="" class="sort_list">
+		<option value="created" selected="selected">新着順</option>
+		<option value="created_asc">古い順</option>
+		<option value="end_period">公開期限が近い順</option>
+		<option value="page">ページ数が多い順</option>
+		<option value="page_asc">ページ数が少ない順</option>
+		<option value="size">ファイルサイズが多い順</option>
+		<option value="size_asc">ファイルサイズが少ない順</option>
+		<option value="dl">ダウンロード数が多い順</option>
+		<option value="dl_asc">ダウンロード数が少ない順</option>
+		<option value="pv">プレビュー数が多い順</option>
+		<option value="pv_asc">プレビュー数が少ない順</option>
+<!--
+		<option value="assessment" >いいねが多い順</option>
+-->
+            </select>
+            アップロード期間：
+            <select name="" class="sort_time_list">
+		<option value="">指定なし</option>
+		<option value="24h">24時間以内</option>
+		<option value="3d">3日以内</option>
+		<option value="1w">1週間以内</option>
+		<option value="1m">1ヶ月以内</option>
+		<option value="3m">3ヶ月以内</option>
+            </select>
+        </form>
+
+<script type="text/javascript">
+	$("select").change(function(){
+		sel = $(this).val();
+		switch(sel){
+			case '':url = "/tops/index/term:/page:1";break;
+			case '24h':url = "/tops/index/term:24h/page:1";break;
+			case '3d':url = "/tops/index/term:3d/page:1";break;
+			case '1w':url = "/tops/index/term:1w/page:1";break;
+			case '1m':url = "/tops/index/term:1m/page:1";break;
+			case '3m':url = "/tops/index/term:3m/page:1";break;
+			case 'created':url     = "/tops/index/sort:created/direction:desc/page:1/term:no";break;
+			case 'created_asc':url = "/tops/index/sort:created/direction:asc/page:1/term:no";break;
+			case 'end_period':url  = "/tops/index/sort:end_period/direction:asc/page:1/term:no";break;
+			case 'pv':url          = "/tops/index/sort:preview_count/direction:desc/page:1/term:no";break;
+			case 'pv_asc':url      = "/tops/index/sort:preview_count/direction:asc/page:1/term:no";break;
+			case 'dl':url          = "/tops/index/sort:download_count/direction:desc/page:1/term:no";break;
+			case 'dl_asc':url      = "/tops/index/sort:download_count/direction:asc/page:1/term:no";break;
+			case 'page':url        = "/tops/index/sort:page/direction:desc/page:1/term:no";break;
+			case 'page_asc':url    = "/tops/index/sort:page/direction:asc/page:1/term:no";break;
+			case 'size':url        = "/tops/index/sort:size/direction:desc/page:1/term:no";break;
+			case 'size_asc':url    = "/tops/index/sort:size/direction:asc/page:1/term:no";break;
+			case 'assessment':url  = "/tops/index/sort:assessment_count/direction:desc/page:1/term:no";break;
+		}
+		location.href = url;
+});
+</script>
+
+</ul></div>
+
+	<script type="text/javascript">
+
+		jump_url = "/Tops/index/term:no/";
+		function page_jump(){
+			jump_url = jump_url + 'page:'+ $("div.page_jump input").val();
+			location.href = jump_url;
+		}
+	</script>
+
+<div class="content_mb_none">
+		<div class="page_jump">
+			<input name="" type="number" min="1" max="8297">
+			ページへ
+			<input name="" type="button" value="移動" onclick="page_jump()">
+[←][→]キー移動でもページ移動できます
+		</div>
+
+  <div class="navigationbox">
+		<span class="left key_txt">【(←)前ページ】</span>
+		<span class="right key_txt">【次ページ(→)】</span>
+		<ul class="morelink">
+		<li class="prev"><a href="http://dropbooks.tv/tops/index/term:no/page:2" rel="next" id="nextPage" th:href="@{/page:{p}(p=${topBack})}" th:remove="*{topBack==null} ? tag : none">前へ</a></li>		
+		<li class="current" th:each="p : ${topBookPages}" th:class="*{p==topPage} ? 'current'"><a href="http://dropbooks.tv/tops/index/term:no/page:2" th:href="@{/page:{p}(p=${p})}" th:text="${p}" th:remove="*{p==topPage} ? tag : none">1</a></li>
+		<!--/*-->
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:2">2</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:3">3</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:4">4</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:5">5</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:6">6</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:7">7</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:8">8</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:9">9</a></li>
+		<!--*/-->
+		<li class="next"><a href="http://dropbooks.tv/tops/index/term:no/page:2" rel="next" id="nextPage" th:href="@{/page:{p}(p=${topNext})}" th:remove="*{topNext==null} ? tag : none">次へ</a></li>		</ul>
+	  </div>
+</div>
+
+
+
+<script type="text/javascript">
+	$(function() {
+		$("img.picborder.mb5").lazyload();
+	});
+	$(window).keydown(
+		function (e) {
+			switch(e.keyCode){
+							case 37:
+								prePage();
+								break;
+							case 39:
+								nextPage();
+								break;
+			}
+		}
+	);
+	function prePage(){
+		var url ='';
+		url = $('#prePage').attr('href');
+		if(url != 'undefined'){
+			location.href= url;
+		}
+	}
+
+	function nextPage(){
+		var url ='';
+		url = $('#nextPage').attr('href');
+		if( url != 'undefined'){
+			location.href= url;
+		}
+	}
+	
+	function AutoJump(url){
+		if($('input').val() !== ''){
+			return;
+		}
+		location.href= url;
+	}
+</script>
+
+
+
+
+<!--アップロード一覧-->
+	<div class="content_list">
+
+<!--1-->
+		<div th:each="book,stat : ${books}" class="list" id="sUf38tTfqq" th:id="${book.siteId}">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;iAwpkfR4dT&#39;)" title="本棚に追加"><img id="book_iAwpkfR4dT" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/iAwpkfR4dT" th:href="@{http://dropbooks.tv/detail/{siteId}(siteId=${book.siteId})}" title="浜風が提督の運動不足を解消する為にセクササイズにお供します！" th:title="${book.title}"><img src="./index_files/iAwpkfR4dT.jpg" th:src="@{/thumbnail/{id}(id=${book.bookId})}" class="picborder mb5" alt="浜風が提督の運動不足を解消する為にセクササイズにお供します！" th:alt="${book.title}"></a>
+            <h3><a href="http://dropbooks.tv/detail/iAwpkfR4dT" th:href="@{http://dropbooks.tv/detail/{siteId}(siteId=${book.siteId})}" title="浜風が提督の運動不足を解消する為にセクササイズにお供します！" th:title="${book.title}" th:text="${book.title}">浜風が提督の運動不足を解消する為にセクササイズにお供します！</a></h3>
+            <p class="time">▲2017/02/28 13:45</p>
+		<dl>
+            <dt>ページ数：</dt><dd>18P</dd>
+            <dt>ファイルサイズ：</dt><dd>1.3MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>0回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+<!--/*-->
+
+<!--1-->
+		<div class="list" id="sUf38tTfqq">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;sUf38tTfqq&#39;)" title="本棚に追加"><img id="book_sUf38tTfqq" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/sUf38tTfqq" title="(同人CG集) [ELEPHANT.GIRAFFE] 甥っ娘催眠"><img src="./index_files/sUf38tTfqq.jpg" class="picborder mb5" alt="(同人CG集) [ELEPHANT.GIRAFFE] 甥っ娘催眠"></a>
+            <h3><a href="http://dropbooks.tv/detail/sUf38tTfqq" title="(同人CG集) [ELEPHANT.GIRAFFE] 甥っ娘催眠">(同人CG集) [ELEPHANT.GIRAFFE] 甥っ娘催眠</a></h3>
+            <p class="time">▲2017/02/28 13:38</p>
+		<dl>
+            <dt>ページ数：</dt><dd>364P</dd>
+            <dt>ファイルサイズ：</dt><dd>507.7MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>8回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="IykALVMrlH">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;IykALVMrlH&#39;)" title="本棚に追加"><img id="book_IykALVMrlH" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/IykALVMrlH" title="(C91) [砂亭 (砂)] 優想薬 (東方Project)"><img src="./index_files/IykALVMrlH.jpg" class="picborder mb5" alt="(C91) [砂亭 (砂)] 優想薬 (東方Project)"></a>
+            <h3><a href="http://dropbooks.tv/detail/IykALVMrlH" title="(C91) [砂亭 (砂)] 優想薬 (東方Project)">(C91) [砂亭 (砂)] 優想薬 (東方Project)</a></h3>
+            <p class="time">▲2017/02/28 13:37</p>
+		<dl>
+            <dt>ページ数：</dt><dd>30P</dd>
+            <dt>ファイルサイズ：</dt><dd>21.8MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>2回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="Fj6SbcczgI">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;Fj6SbcczgI&#39;)" title="本棚に追加"><img id="book_Fj6SbcczgI" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/Fj6SbcczgI" title="(カードファイト!! ヴァンガード) [サークル浪漫飛行(太平天極)] ミサキファイトG_2"><img src="./index_files/Fj6SbcczgI.jpg" class="picborder mb5" alt="(カードファイト!! ヴァンガード) [サークル浪漫飛行(太平天極)] ミサキファイトG_2"></a>
+            <h3><a href="http://dropbooks.tv/detail/Fj6SbcczgI" title="(カードファイト!! ヴァンガード) [サークル浪漫飛行(太平天極)] ミサキファイトG_2">(カードファイト!! ヴァンガード) [サークル浪漫飛行(太平天極)] ミサキファイトG_2</a></h3>
+            <p class="time">▲2017/02/28 13:37</p>
+		<dl>
+            <dt>ページ数：</dt><dd>31P</dd>
+            <dt>ファイルサイズ：</dt><dd>37.6MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>1回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="q9sLJ3bf9s">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;q9sLJ3bf9s&#39;)" title="本棚に追加"><img id="book_q9sLJ3bf9s" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/q9sLJ3bf9s" title="[20+1] リゾートビーチで孕ませてっ！"><img src="./index_files/q9sLJ3bf9s.jpg" class="picborder mb5" alt="[20+1] リゾートビーチで孕ませてっ！"></a>
+            <h3><a href="http://dropbooks.tv/detail/q9sLJ3bf9s" title="[20+1] リゾートビーチで孕ませてっ！">[20+1] リゾートビーチで孕ませてっ！</a></h3>
+            <p class="time">▲2017/02/28 13:37</p>
+		<dl>
+            <dt>ページ数：</dt><dd>276P</dd>
+            <dt>ファイルサイズ：</dt><dd>502.3MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>11回</dd>
+		</dl>
+		<ul class="tag_list">
+<li><a href="http://dropbooks.tv/search/index/word:%E5%90%8C%E4%BA%BACG%E9%9B%86">同人CG集</a></li>		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="WJAF7dNLoE">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;WJAF7dNLoE&#39;)" title="本棚に追加"><img id="book_WJAF7dNLoE" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/WJAF7dNLoE" title="[HaRu] 巨乳お稲荷様と同棲性活"><img src="./index_files/WJAF7dNLoE.jpg" class="picborder mb5" alt="[HaRu] 巨乳お稲荷様と同棲性活"></a>
+            <h3><a href="http://dropbooks.tv/detail/WJAF7dNLoE" title="[HaRu] 巨乳お稲荷様と同棲性活">[HaRu] 巨乳お稲荷様と同棲性活</a></h3>
+            <p class="time">▲2017/02/28 13:36</p>
+		<dl>
+            <dt>ページ数：</dt><dd>18P</dd>
+            <dt>ファイルサイズ：</dt><dd>18.9MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>6回</dd>
+		</dl>
+		<ul class="tag_list">
+<li><a href="http://dropbooks.tv/search/index/word:HaRu">HaRu</a></li><li><a href="http://dropbooks.tv/search/index/word:%E5%A6%96%E7%8B%90">妖狐</a></li><li><a href="http://dropbooks.tv/search/index/word:%E4%BA%BA%E5%A4%96">人外</a></li>		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="kTz1BqnR8H">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;kTz1BqnR8H&#39;)" title="本棚に追加"><img id="book_kTz1BqnR8H" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/kTz1BqnR8H" title="深海棲艦の陥没乳首をこんにちはするまでいじり倒すよ！"><img src="./index_files/kTz1BqnR8H.jpg" class="picborder mb5" alt="深海棲艦の陥没乳首をこんにちはするまでいじり倒すよ！"></a>
+            <h3><a href="http://dropbooks.tv/detail/kTz1BqnR8H" title="深海棲艦の陥没乳首をこんにちはするまでいじり倒すよ！">深海棲艦の陥没乳首をこんにちはするまでいじり倒すよ！</a></h3>
+            <p class="time">▲2017/02/28 13:35</p>
+		<dl>
+            <dt>ページ数：</dt><dd>22P</dd>
+            <dt>ファイルサイズ：</dt><dd>1.7MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>4回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="x63KsPxjBq">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;x63KsPxjBq&#39;)" title="本棚に追加"><img id="book_x63KsPxjBq" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/x63KsPxjBq" title="[valssu (茶琉)] メロンが超振動！ R1 (テイルズオブジアビス)"><img src="./index_files/x63KsPxjBq.jpg" class="picborder mb5" alt="[valssu (茶琉)] メロンが超振動！ R1 (テイルズオブジアビス)"></a>
+            <h3><a href="http://dropbooks.tv/detail/x63KsPxjBq" title="[valssu (茶琉)] メロンが超振動！ R1 (テイルズオブジアビス)">[valssu (茶琉)] メロンが超振動！ R1 (テイルズオブジアビス)</a></h3>
+            <p class="time">▲2017/02/28 13:34</p>
+		<dl>
+            <dt>ページ数：</dt><dd>70P</dd>
+            <dt>ファイルサイズ：</dt><dd>19.7MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>7回</dd>
+		</dl>
+		<ul class="tag_list">
+<li><a href="http://dropbooks.tv/search/index/word:%E5%AF%9D%E5%8F%96%E3%82%89%E3%82%8C">寝取られ</a></li><li><a href="http://dropbooks.tv/search/index/word:NTR">NTR</a></li>		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+	
+
+
+<!--1-->
+		<div class="list" id="Ss8t2SHMDf">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;Ss8t2SHMDf&#39;)" title="本棚に追加"><img id="book_Ss8t2SHMDf" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/Ss8t2SHMDf" title="(C90) [ぽぽちち (八尋ぽち)] Love：レムから始める早漏改善生活 (Re：ゼロから始める異世界生活)"><img src="./index_files/Ss8t2SHMDf.jpg" class="picborder mb5" alt="(C90) [ぽぽちち (八尋ぽち)] Love：レムから始める早漏改善生活 (Re：ゼロから始める異世界生活)"></a>
+            <h3><a href="http://dropbooks.tv/detail/Ss8t2SHMDf" title="(C90) [ぽぽちち (八尋ぽち)] Love：レムから始める早漏改善生活 (Re：ゼロから始める異世界生活)">(C90) [ぽぽちち (八尋ぽち)] Love：レムから始める早漏改善生活 (Re：ゼロから始める異世界生活)</a></h3>
+            <p class="time">▲2017/02/28 12:37</p>
+		<dl>
+            <dt>ページ数：</dt><dd>26P</dd>
+            <dt>ファイルサイズ：</dt><dd>17.1MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>161回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+
+
+		<!-- 2014/04/23追加 -->
+
+<!--<div style="margin:-20px 0 20px -4px;">
+<div id="fg_jewel">
+<a href="http://c.mbaf.jp/r/1tkf2qo/">&nbsp;</a>
+<iframe
+	src="http://www.hananokai.tv/banner/onlinegirl.banner.php?w=200&code=fng023&site=jewel&view=6&wmode=transparent"
+	width="806"
+	height="225"
+	scrolling="no"
+	frameborder="0"
+	allowtransparency="true"
+	style="border:none;display:block;" >
+</iframe>
+
+<script>
+window.onload=function(){var width = $('#fg_jewel iframe').width();var height = $('#fg_jewel iframe').height();$('#fg_jewel').css('position','relative');$('#fg_jewel iframe,#fg_jewel a').css('position','absolute');$('#fg_jewel iframe,#fg_jewel a').css('height',height);$('#fg_jewel iframe,#fg_jewel a').css('width',width);$('#fg_jewel iframe').css('z-index','1');$('#fg_jewel a').css('z-index','2');$('#fg_jewel a').css('display','block');$('#fg_jewel a').css('text-decoration','none');};
+</script>
+	</div></div>-->
+
+	
+
+
+<!--1-->
+		<div class="list" id="v16GbEJXaH">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;v16GbEJXaH&#39;)" title="本棚に追加"><img id="book_v16GbEJXaH" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/v16GbEJXaH" title="[塩屋 (塩屋舞子)] MAGICA BADるーと (魔法少女まどか☆マギカ) [DL版]"><img src="./index_files/v16GbEJXaH.jpg" class="picborder mb5" alt="[塩屋 (塩屋舞子)] MAGICA BADるーと (魔法少女まどか☆マギカ) [DL版]"></a>
+            <h3><a href="http://dropbooks.tv/detail/v16GbEJXaH" title="[塩屋 (塩屋舞子)] MAGICA BADるーと (魔法少女まどか☆マギカ) [DL版]">[塩屋 (塩屋舞子)] MAGICA BADるーと (魔法少女まどか☆マギカ) [DL版]</a></h3>
+            <p class="time">▲2017/02/28 12:37</p>
+		<dl>
+            <dt>ページ数：</dt><dd>28P</dd>
+            <dt>ファイルサイズ：</dt><dd>17.6MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>35回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="bBzMf13v3V">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;bBzMf13v3V&#39;)" title="本棚に追加"><img id="book_bBzMf13v3V" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/bBzMf13v3V" title="彼女の異常な発情"><img src="./index_files/bBzMf13v3V.jpg" class="picborder mb5" alt="彼女の異常な発情"></a>
+            <h3><a href="http://dropbooks.tv/detail/bBzMf13v3V" title="彼女の異常な発情">彼女の異常な発情</a></h3>
+            <p class="time">▲2017/02/28 12:36</p>
+		<dl>
+            <dt>ページ数：</dt><dd>25P</dd>
+            <dt>ファイルサイズ：</dt><dd>18.5MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>183回</dd>
+		</dl>
+		<ul class="tag_list">
+<li><a href="http://dropbooks.tv/search/index/word:%E3%83%90%E3%83%83%E3%82%AF">バック</a></li><li><a href="http://dropbooks.tv/search/index/word:%E3%83%95%E3%82%A7%E3%83%A9">フェラ</a></li><li><a href="http://dropbooks.tv/search/index/word:%E4%B8%AD%E5%87%BA%E3%81%97">中出し</a></li><li><a href="http://dropbooks.tv/search/index/word:%E6%AD%A3%E5%B8%B8%E4%BD%8D">正常位</a></li><li><a href="http://dropbooks.tv/search/index/word:%E9%A1%94%E5%B0%84">顔射</a></li>		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="rzXGcGmcXs">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;rzXGcGmcXs&#39;)" title="本棚に追加"><img id="book_rzXGcGmcXs" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/rzXGcGmcXs" title="家族挿姦図"><img src="./index_files/rzXGcGmcXs.jpg" class="picborder mb5" alt="家族挿姦図"></a>
+            <h3><a href="http://dropbooks.tv/detail/rzXGcGmcXs" title="家族挿姦図">家族挿姦図</a></h3>
+            <p class="time">▲2017/02/28 12:36</p>
+		<dl>
+            <dt>ページ数：</dt><dd>253P</dd>
+            <dt>ファイルサイズ：</dt><dd>196MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>607回</dd>
+		</dl>
+		<ul class="tag_list">
+<li><a href="http://dropbooks.tv/search/index/word:%E6%9D%BF%E5%A0%B4%E5%BA%83%E3%81%97">板場広し</a></li>		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="waNjpwInbC">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;waNjpwInbC&#39;)" title="本棚に追加"><img id="book_waNjpwInbC" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/waNjpwInbC" title="(成年コミック) [有人成徒] ヌキJKとコキJK [DL版]"><img src="./index_files/waNjpwInbC.jpg" class="picborder mb5" alt="(成年コミック) [有人成徒] ヌキJKとコキJK [DL版]"></a>
+            <h3><a href="http://dropbooks.tv/detail/waNjpwInbC" title="(成年コミック) [有人成徒] ヌキJKとコキJK [DL版]">(成年コミック) [有人成徒] ヌキJKとコキJK [DL版]</a></h3>
+            <p class="time">▲2017/02/28 12:36</p>
+		<dl>
+            <dt>ページ数：</dt><dd>228P</dd>
+            <dt>ファイルサイズ：</dt><dd>228.3MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>575回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="3P9ZI0EFOi">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;3P9ZI0EFOi&#39;)" title="本棚に追加"><img id="book_3P9ZI0EFOi" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/3P9ZI0EFOi" title="セックス中によしよしされて赤面する浜風可愛い・・・。"><img src="./index_files/3P9ZI0EFOi.jpg" class="picborder mb5" alt="セックス中によしよしされて赤面する浜風可愛い・・・。"></a>
+            <h3><a href="http://dropbooks.tv/detail/3P9ZI0EFOi" title="セックス中によしよしされて赤面する浜風可愛い・・・。">セックス中によしよしされて赤面する浜風可愛い・・・。</a></h3>
+            <p class="time">▲2017/02/28 12:35</p>
+		<dl>
+            <dt>ページ数：</dt><dd>24P</dd>
+            <dt>ファイルサイズ：</dt><dd>1.2MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>87回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="6OfUVJuXzU">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;6OfUVJuXzU&#39;)" title="本棚に追加"><img id="book_6OfUVJuXzU" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/6OfUVJuXzU" title="[ブラザーピエロ] 働くオンナの熟れた汗 [DL版]"><img src="./index_files/6OfUVJuXzU.jpg" class="picborder mb5" alt="[ブラザーピエロ] 働くオンナの熟れた汗 [DL版]"></a>
+            <h3><a href="http://dropbooks.tv/detail/6OfUVJuXzU" title="[ブラザーピエロ] 働くオンナの熟れた汗 [DL版]">[ブラザーピエロ] 働くオンナの熟れた汗 [DL版]</a></h3>
+            <p class="time">▲2017/02/28 12:34</p>
+		<dl>
+            <dt>ページ数：</dt><dd>211P</dd>
+            <dt>ファイルサイズ：</dt><dd>187.9MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>318回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="mCsh6dISHS">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;mCsh6dISHS&#39;)" title="本棚に追加"><img id="book_mCsh6dISHS" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/mCsh6dISHS" title="(C87) [クレイトス (龍之介)] クレイジーサイコレズ (艦隊これくしょん -艦これ-)"><img src="./index_files/mCsh6dISHS.jpg" class="picborder mb5" alt="(C87) [クレイトス (龍之介)] クレイジーサイコレズ (艦隊これくしょん -艦これ-)"></a>
+            <h3><a href="http://dropbooks.tv/detail/mCsh6dISHS" title="(C87) [クレイトス (龍之介)] クレイジーサイコレズ (艦隊これくしょん -艦これ-)">(C87) [クレイトス (龍之介)] クレイジーサイコレズ (艦隊これくしょん -艦これ-)</a></h3>
+            <p class="time">▲2017/02/28 12:34</p>
+		<dl>
+            <dt>ページ数：</dt><dd>22P</dd>
+            <dt>ファイルサイズ：</dt><dd>20.3MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>19回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="kpcXkRD2nw">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;kpcXkRD2nw&#39;)" title="本棚に追加"><img id="book_kpcXkRD2nw" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/kpcXkRD2nw" title="田中あすかをレイプして無理矢理吹部をやめさせるなんて・・・。"><img src="./index_files/kpcXkRD2nw.jpg" class="picborder mb5" alt="田中あすかをレイプして無理矢理吹部をやめさせるなんて・・・。"></a>
+            <h3><a href="http://dropbooks.tv/detail/kpcXkRD2nw" title="田中あすかをレイプして無理矢理吹部をやめさせるなんて・・・。">田中あすかをレイプして無理矢理吹部をやめさせるなんて・・・。</a></h3>
+            <p class="time">▲2017/02/28 12:30</p>
+		<dl>
+            <dt>ページ数：</dt><dd>21P</dd>
+            <dt>ファイルサイズ：</dt><dd>1.4MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>115回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="5uvZDbm8gi">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;5uvZDbm8gi&#39;)" title="本棚に追加"><img id="book_5uvZDbm8gi" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/5uvZDbm8gi" title="キュアミラクルが魔法で学校中を乱交地獄にしてしまう・・・、"><img src="./index_files/5uvZDbm8gi.jpg" class="picborder mb5" alt="キュアミラクルが魔法で学校中を乱交地獄にしてしまう・・・、"></a>
+            <h3><a href="http://dropbooks.tv/detail/5uvZDbm8gi" title="キュアミラクルが魔法で学校中を乱交地獄にしてしまう・・・、">キュアミラクルが魔法で学校中を乱交地獄にしてしまう・・・、</a></h3>
+            <p class="time">▲2017/02/28 12:20</p>
+		<dl>
+            <dt>ページ数：</dt><dd>31P</dd>
+            <dt>ファイルサイズ：</dt><dd>1.8MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>166回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="aFiag28f6M">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;aFiag28f6M&#39;)" title="本棚に追加"><img id="book_aFiag28f6M" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/aFiag28f6M" title="羽川翼の綺麗な乳房を見て正気を保てるやつとかいんの？"><img src="./index_files/aFiag28f6M.jpg" class="picborder mb5" alt="羽川翼の綺麗な乳房を見て正気を保てるやつとかいんの？"></a>
+            <h3><a href="http://dropbooks.tv/detail/aFiag28f6M" title="羽川翼の綺麗な乳房を見て正気を保てるやつとかいんの？">羽川翼の綺麗な乳房を見て正気を保てるやつとかいんの？</a></h3>
+            <p class="time">▲2017/02/28 12:10</p>
+		<dl>
+            <dt>ページ数：</dt><dd>25P</dd>
+            <dt>ファイルサイズ：</dt><dd>1.9MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>150回</dd>
+		</dl>
+		<ul class="tag_list">
+<li class="user"><a href="http://dropbooks.tv/search/index/word:%E5%8C%96%E7%89%A9%E8%AA%9E">化物語</a></li>		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="vxcoaft9Rj">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;vxcoaft9Rj&#39;)" title="本棚に追加"><img id="book_vxcoaft9Rj" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/vxcoaft9Rj" title="メグとマヤ、まだおっぱいは小さいけどエロい事は勉強済みたいｗ"><img src="./index_files/vxcoaft9Rj.jpg" class="picborder mb5" alt="メグとマヤ、まだおっぱいは小さいけどエロい事は勉強済みたいｗ"></a>
+            <h3><a href="http://dropbooks.tv/detail/vxcoaft9Rj" title="メグとマヤ、まだおっぱいは小さいけどエロい事は勉強済みたいｗ">メグとマヤ、まだおっぱいは小さいけどエロい事は勉強済みたいｗ</a></h3>
+            <p class="time">▲2017/02/28 12:05</p>
+		<dl>
+            <dt>ページ数：</dt><dd>23P</dd>
+            <dt>ファイルサイズ：</dt><dd>1.6MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>111回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="oMPW0iUjrF">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;oMPW0iUjrF&#39;)" title="本棚に追加"><img id="book_oMPW0iUjrF" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/oMPW0iUjrF" title="曜ちゃんがエッチ過ぎてヨーソーローになっちゃうよ！"><img src="./index_files/oMPW0iUjrF.jpg" class="picborder mb5" alt="曜ちゃんがエッチ過ぎてヨーソーローになっちゃうよ！"></a>
+            <h3><a href="http://dropbooks.tv/detail/oMPW0iUjrF" title="曜ちゃんがエッチ過ぎてヨーソーローになっちゃうよ！">曜ちゃんがエッチ過ぎてヨーソーローになっちゃうよ！</a></h3>
+            <p class="time">▲2017/02/28 12:00</p>
+		<dl>
+            <dt>ページ数：</dt><dd>22P</dd>
+            <dt>ファイルサイズ：</dt><dd>1.6MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>60回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="mJuYnpvkA4">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;mJuYnpvkA4&#39;)" title="本棚に追加"><img id="book_mJuYnpvkA4" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/mJuYnpvkA4" title="幸子が遊びに来たと思ったらまゆはPとセックスしてました・・・。"><img src="./index_files/mJuYnpvkA4.jpg" class="picborder mb5" alt="幸子が遊びに来たと思ったらまゆはPとセックスしてました・・・。"></a>
+            <h3><a href="http://dropbooks.tv/detail/mJuYnpvkA4" title="幸子が遊びに来たと思ったらまゆはPとセックスしてました・・・。">幸子が遊びに来たと思ったらまゆはPとセックスしてました・・・。</a></h3>
+            <p class="time">▲2017/02/28 11:55</p>
+		<dl>
+            <dt>ページ数：</dt><dd>25P</dd>
+            <dt>ファイルサイズ：</dt><dd>1.8MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>223回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="27P1NVLUJX">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;27P1NVLUJX&#39;)" title="本棚に追加"><img id="book_27P1NVLUJX" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/27P1NVLUJX" title="麗奈無惨          "><img src="./index_files/27P1NVLUJX.jpg" class="picborder mb5" alt="麗奈無惨          "></a>
+            <h3><a href="http://dropbooks.tv/detail/27P1NVLUJX" title="麗奈無惨          ">麗奈無惨          </a></h3>
+            <p class="time">▲2017/02/28 11:51</p>
+		<dl>
+            <dt>ページ数：</dt><dd>28P</dd>
+            <dt>ファイルサイズ：</dt><dd>18.9MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>104回</dd>
+		</dl>
+		<ul class="tag_list">
+<li><a href="http://dropbooks.tv/search/index/word:%E9%9F%BF%E3%81%91!%E3%83%A6%E3%83%BC%E3%83%95%E3%82%A9%E3%83%8B%E3%82%A2%E3%83%A0">響け!ユーフォニアム</a></li><li class="user"><a href="http://dropbooks.tv/search/index/word:%E5%90%8C%E4%BA%BACG%E9%9B%86">同人CG集</a></li>		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="cFCv3Hm3m1">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;cFCv3Hm3m1&#39;)" title="本棚に追加"><img id="book_cFCv3Hm3m1" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/cFCv3Hm3m1" title="[どりる日和 (冥茶)] ほたるちゃんとHする本 (だがしかし)_2"><img src="./index_files/cFCv3Hm3m1.jpg" class="picborder mb5" alt="[どりる日和 (冥茶)] ほたるちゃんとHする本 (だがしかし)_2"></a>
+            <h3><a href="http://dropbooks.tv/detail/cFCv3Hm3m1" title="[どりる日和 (冥茶)] ほたるちゃんとHする本 (だがしかし)_2">[どりる日和 (冥茶)] ほたるちゃんとHする本 (だがしかし)_2</a></h3>
+            <p class="time">▲2017/02/28 11:51</p>
+		<dl>
+            <dt>ページ数：</dt><dd>24P</dd>
+            <dt>ファイルサイズ：</dt><dd>5MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>75回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="fDhlYu0S5i">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;fDhlYu0S5i&#39;)" title="本棚に追加"><img id="book_fDhlYu0S5i" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/fDhlYu0S5i" title="022803_7"><img src="./index_files/fDhlYu0S5i.jpg" class="picborder mb5" alt="022803_7"></a>
+            <h3><a href="http://dropbooks.tv/detail/fDhlYu0S5i" title="022803_7">022803_7</a></h3>
+            <p class="time">▲2017/02/28 11:50</p>
+		<dl>
+            <dt>ページ数：</dt><dd>25P</dd>
+            <dt>ファイルサイズ：</dt><dd>7.6MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>84回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="nKJU63agLC">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;nKJU63agLC&#39;)" title="本棚に追加"><img id="book_nKJU63agLC" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/nKJU63agLC" title="癒し系イチャラブセックスをする響がカワイイ！"><img src="./index_files/nKJU63agLC.jpg" class="picborder mb5" alt="癒し系イチャラブセックスをする響がカワイイ！"></a>
+            <h3><a href="http://dropbooks.tv/detail/nKJU63agLC" title="癒し系イチャラブセックスをする響がカワイイ！">癒し系イチャラブセックスをする響がカワイイ！</a></h3>
+            <p class="time">▲2017/02/28 11:50</p>
+		<dl>
+            <dt>ページ数：</dt><dd>23P</dd>
+            <dt>ファイルサイズ：</dt><dd>2.1MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>132回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="h1UJ2SqQ8S">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;h1UJ2SqQ8S&#39;)" title="本棚に追加"><img id="book_h1UJ2SqQ8S" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/h1UJ2SqQ8S" title="[きみおたまこ] いつでも君を、想ってる。"><img src="./index_files/h1UJ2SqQ8S.jpg" class="picborder mb5" alt="[きみおたまこ] いつでも君を、想ってる。"></a>
+            <h3><a href="http://dropbooks.tv/detail/h1UJ2SqQ8S" title="[きみおたまこ] いつでも君を、想ってる。">[きみおたまこ] いつでも君を、想ってる。</a></h3>
+            <p class="time">▲2017/02/28 11:49</p>
+		<dl>
+            <dt>ページ数：</dt><dd>199P</dd>
+            <dt>ファイルサイズ：</dt><dd>322.8MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>300回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="k9OVaecobN">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;k9OVaecobN&#39;)" title="本棚に追加"><img id="book_k9OVaecobN" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/k9OVaecobN" title="[きみおたまこ] 誰にも秘密な恋ゴコロ_"><img src="./index_files/k9OVaecobN.jpg" class="picborder mb5" alt="[きみおたまこ] 誰にも秘密な恋ゴコロ_"></a>
+            <h3><a href="http://dropbooks.tv/detail/k9OVaecobN" title="[きみおたまこ] 誰にも秘密な恋ゴコロ_">[きみおたまこ] 誰にも秘密な恋ゴコロ_</a></h3>
+            <p class="time">▲2017/02/28 11:49</p>
+		<dl>
+            <dt>ページ数：</dt><dd>248P</dd>
+            <dt>ファイルサイズ：</dt><dd>325MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>216回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="U5ra48Rxfj">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;U5ra48Rxfj&#39;)" title="本棚に追加"><img id="book_U5ra48Rxfj" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/U5ra48Rxfj" title="メイちゃんが全身に電流を流されて失禁してしまう！"><img src="./index_files/U5ra48Rxfj.jpg" class="picborder mb5" alt="メイちゃんが全身に電流を流されて失禁してしまう！"></a>
+            <h3><a href="http://dropbooks.tv/detail/U5ra48Rxfj" title="メイちゃんが全身に電流を流されて失禁してしまう！">メイちゃんが全身に電流を流されて失禁してしまう！</a></h3>
+            <p class="time">▲2017/02/28 11:45</p>
+		<dl>
+            <dt>ページ数：</dt><dd>42P</dd>
+            <dt>ファイルサイズ：</dt><dd>2.7MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>170回</dd>
+		</dl>
+		<ul class="tag_list">
+<li class="user"><a href="http://dropbooks.tv/search/index/word:%E3%83%9D%E3%82%B1%E3%83%83%E3%83%88%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC">ポケットモンスター</a></li><li class="user"><a href="http://dropbooks.tv/search/index/word:%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3">ポケモン</a></li><li class="user"><a href="http://dropbooks.tv/search/index/word:%E3%83%A1%E3%82%A4(%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3)">メイ(ポケモン)</a></li>		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="fxmt9Efgeu">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;fxmt9Efgeu&#39;)" title="本棚に追加"><img id="book_fxmt9Efgeu" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/fxmt9Efgeu" title="［ロケットモンキー］純愛トリックスター"><img src="./index_files/fxmt9Efgeu.jpg" class="picborder mb5" alt="［ロケットモンキー］純愛トリックスター"></a>
+            <h3><a href="http://dropbooks.tv/detail/fxmt9Efgeu" title="［ロケットモンキー］純愛トリックスター">［ロケットモンキー］純愛トリックスター</a></h3>
+            <p class="time">▲2017/02/28 11:43</p>
+		<dl>
+            <dt>ページ数：</dt><dd>211P</dd>
+            <dt>ファイルサイズ：</dt><dd>394.5MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>1388回</dd>
+		</dl>
+		<ul class="tag_list">
+<li class="user"><a href="http://dropbooks.tv/search/index/word:%E6%88%90%E5%B9%B4%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF">成年コミック</a></li><li class="user"><a href="http://dropbooks.tv/search/index/word:%E3%83%AD%E3%82%B1%E3%83%83%E3%83%88%E3%83%A2%E3%83%B3%E3%82%AD%E3%83%BC">ロケットモンキー</a></li>		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="Uqr6ugSxXI">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;Uqr6ugSxXI&#39;)" title="本棚に追加"><img id="book_Uqr6ugSxXI" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/Uqr6ugSxXI" title="モンスターのでかいイチモツでレイプされるベアトリクス！"><img src="./index_files/Uqr6ugSxXI.jpg" class="picborder mb5" alt="モンスターのでかいイチモツでレイプされるベアトリクス！"></a>
+            <h3><a href="http://dropbooks.tv/detail/Uqr6ugSxXI" title="モンスターのでかいイチモツでレイプされるベアトリクス！">モンスターのでかいイチモツでレイプされるベアトリクス！</a></h3>
+            <p class="time">▲2017/02/28 11:40</p>
+		<dl>
+            <dt>ページ数：</dt><dd>15P</dd>
+            <dt>ファイルサイズ：</dt><dd>1.1MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>204回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="5FfeO2jIXf">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;5FfeO2jIXf&#39;)" title="本棚に追加"><img id="book_5FfeO2jIXf" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/5FfeO2jIXf" title="[いいわけ会社] 七色と恋人プレイ3 (東方Project)"><img src="./index_files/5FfeO2jIXf.jpg" class="picborder mb5" alt="[いいわけ会社] 七色と恋人プレイ3 (東方Project)"></a>
+            <h3><a href="http://dropbooks.tv/detail/5FfeO2jIXf" title="[いいわけ会社] 七色と恋人プレイ3 (東方Project)">[いいわけ会社] 七色と恋人プレイ3 (東方Project)</a></h3>
+            <p class="time">▲2017/02/28 11:37</p>
+		<dl>
+            <dt>ページ数：</dt><dd>26P</dd>
+            <dt>ファイルサイズ：</dt><dd>20.7MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>66回</dd>
+		</dl>
+		<ul class="tag_list">
+		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="KXDGSOQ7yU">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;KXDGSOQ7yU&#39;)" title="本棚に追加"><img id="book_KXDGSOQ7yU" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/KXDGSOQ7yU" title="[砂亭 (s73d)] 続・魔理沙が森で触手に"><img src="./index_files/KXDGSOQ7yU.jpg" class="picborder mb5" alt="[砂亭 (s73d)] 続・魔理沙が森で触手に"></a>
+            <h3><a href="http://dropbooks.tv/detail/KXDGSOQ7yU" title="[砂亭 (s73d)] 続・魔理沙が森で触手に">[砂亭 (s73d)] 続・魔理沙が森で触手に</a></h3>
+            <p class="time">▲2017/02/28 11:37</p>
+		<dl>
+            <dt>ページ数：</dt><dd>32P</dd>
+            <dt>ファイルサイズ：</dt><dd>38.3MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>84回</dd>
+		</dl>
+		<ul class="tag_list">
+<li><a href="http://dropbooks.tv/search/index/word:%E6%9D%B1%E6%96%B9">東方</a></li>		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+
+
+<!--1-->
+		<div class="list" id="Sqwd9OANYx">
+			<p class="bookplus">
+					<a href="javascript:void(0)" onclick="bookStand(&#39;on&#39;,&#39;Sqwd9OANYx&#39;)" title="本棚に追加"><img id="book_Sqwd9OANYx" src="./index_files/book_plus.png" alt="本棚に追加" width="30" height="30"></a>
+				</p>
+			<a href="http://dropbooks.tv/detail/Sqwd9OANYx" title="その頃、あの娘は…2"><img src="./index_files/Sqwd9OANYx.jpg" class="picborder mb5" alt="その頃、あの娘は…2"></a>
+            <h3><a href="http://dropbooks.tv/detail/Sqwd9OANYx" title="その頃、あの娘は…2">その頃、あの娘は…2</a></h3>
+            <p class="time">▲2017/02/28 11:37</p>
+		<dl>
+            <dt>ページ数：</dt><dd>74P</dd>
+            <dt>ファイルサイズ：</dt><dd>70MB</dd>
+            <dt>ダウンロード数：</dt>
+            <dd>229回</dd>
+		</dl>
+		<ul class="tag_list">
+<li><a href="http://dropbooks.tv/search/index/word:%E3%81%93%E3%81%A3%E3%81%A8%E3%82%93%E5%A0%82">こっとん堂</a></li><li class="user"><a href="http://dropbooks.tv/search/index/word:t%E5%A2%97%E6%AE%96%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">t増殖ファイル</a></li>		</ul>
+ 
+ 		</div>
+<!--adult-->
+	
+<!--*/-->
+
+
+
+	</div>
+<!--/アップロード一覧-->
+
+<script type="text/javascript">
+function bookStand(togle , file_id){
+	$.post(
+	    "/detail/book_stand",                      // リクエストURL
+	    { "file_id":file_id , "togle":togle}, // データ
+	    function(data, status) {
+		if(togle == 'on'){
+			$('#'+file_id+' p a').attr('onclick',"bookStand('off','"+file_id+"')");
+			var test = $('#'+file_id+' p.bookpls a').attr('onclick',"bookStand('off','"+file_id+"')");
+			$('#book_'+file_id).attr('src',"/img/pc/thumb/book_minus.png");
+		}
+		if(togle == 'off'){
+			$('#'+file_id+' p a').attr('onclick',"bookStand('on','"+file_id+"')");
+			var test = $('#'+file_id+' p.bookpls a').attr('onclick',"bookStand('on','"+file_id+"')");
+			$('#book_'+file_id).attr('src',"/img/pc/thumb/book_plus.png");
+		}
+	    },
+	    "html"
+	);
+}
+
+
+</script>
+
+
+
+
+<div class="content">
+		<form action="http://dropbooks.tv/" method="get" class="page_jump">
+		[←][→]キー移動でもページ移動できます
+		</form>	  <div class="navigationbox">
+		<span class="left key_txt">【(←)前ページ】</span>
+		<span class="right key_txt">【次ページ(→)】</span>
+		<ul class="morelink">
+		<li class="prev"><a href="http://dropbooks.tv/tops/index/term:no/page:2" rel="next" id="nextPage" th:href="@{/page:{p}(p=${topBack})}" th:remove="*{topBack==null} ? tag : none">前へ</a></li>		
+		<li class="current" th:each="p : ${topBookPages}" th:class="*{p==topPage} ? 'current'"><a href="http://dropbooks.tv/tops/index/term:no/page:2" th:href="@{/page:{p}(p=${p})}" th:text="${p}" th:remove="*{p==topPage} ? tag : none">1</a></li>
+		<!--/*-->
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:2">2</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:3">3</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:4">4</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:5">5</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:6">6</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:7">7</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:8">8</a></li>
+		<li><a href="http://dropbooks.tv/tops/index/term:no/page:9">9</a></li>
+		<!--*/-->
+		<li class="next"><a href="http://dropbooks.tv/tops/index/term:no/page:2" rel="next" id="nextPage" th:href="@{/page:{p}(p=${topNext})}" th:remove="*{topNext==null} ? tag : none">次へ</a></li>		</ul>
+	  </div>
+
+</div>
+
+
+
+
+</div><!--/main-->
+
+<!--sidebar-->
+<div id="sidebar">
+
+	<div class="box" style="margin-bottom:15px;">
+	<p class="title t_keyword_new">最新検索ワード</p>
+        <ul class="keyword_list">
+            <li><a href="http://dropbooks.tv/search/index/word:%E8%89%A6%E3%81%93%E3%82%8C">艦これ</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E5%AD%95%E3%81%BE%E3%81%9B">孕ませ</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E7%BD%B0%E3%82%B2%E3%83%BC%E3%83%A0">罰ゲーム</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:DL%E3%83%A1%E3%82%A4%E3%83%88">DLメイト</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%82%A2%E3%81%B8%E9%A1%94">アへ顔</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E6%A1%9C%E6%B9%AF%E3%83%8F%E3%83%AB">桜湯ハル</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%81%86%E3%82%8B%E3%81%86%E5%B3%B6%E5%91%BC%E9%9F%B3">うるう島呼音</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%82%BB%E3%83%BC%E3%83%A9%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%B3">セーラームーン</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E5%82%AC%E7%9C%A0">催眠</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%83%9F%E3%83%A9%E3%82%A4%E3%83%8E%E3%82%BB%E3%82%AB%E3%82%A4">ミライノセカイ</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E5%90%8C%E4%BA%BACG%E9%9B%86">同人CG集</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%83%A9%E3%83%96%E3%83%A9%E3%82%A4%E3%83%96%EF%BC%81">ラブライブ！</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%82%B3%E3%82%AA%E3%83%AA%E3%82%BA">コオリズ</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E5%B7%A8%E6%A0%B9">巨根</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:C91">C91</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%81%BE%E3%82%8B%E3%81%A0%E3%81%97%E3%81%99%E3%81%9F">まるだしすた</a></li>
+        </ul>
+   	</div>
+
+
+<!--人気検索ワード-->
+	<div class="box">
+	<p class="title t_keyword_hot">人気検索ワード</p>
+        <ul class="keyword_list">
+							<li><a href="http://dropbooks.tv/search/index/word:%E6%88%90%E5%B9%B4%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF">成年コミック</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E5%90%8C%E4%BA%BACG%E9%9B%86">同人CG集</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:NTR">NTR</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:C91">C91</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E3%83%AD%E3%83%AA">ロリ</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E6%99%82%E9%96%93%E5%81%9C%E6%AD%A2">時間停止</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E5%82%AC%E7%9C%A0">催眠</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E3%81%8A%E3%81%AD%E3%82%B7%E3%83%A7%E3%82%BF">おねショタ</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E4%BA%BA%E5%A6%BB">人妻</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:CG">CG</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E7%94%B7%E3%81%AE%E5%A8%98">男の娘</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E3%82%AF%E3%83%AA%E3%83%A0%E3%82%BE%E3%83%B3">クリムゾン</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E5%BF%AB%E6%A5%BD%E5%A0%95%E3%81%A1">快楽堕ち</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E8%89%A6%E3%81%93%E3%82%8C">艦これ</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E3%81%B5%E3%81%9F%E3%81%AA%E3%82%8A">ふたなり</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E4%B8%80%E8%88%AC%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF">一般コミック</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:CG%E9%9B%86">CG集</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E6%9D%B1%E6%96%B9">東方</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:BANG">BANG</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:YOU">YOU</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E3%83%AC%E3%82%A4%E3%83%97">レイプ</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E5%A5%B4%E9%9A%B7">奴隷</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E5%AD%95%E3%81%BE%E3%81%9B">孕ませ</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:fate">fate</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E8%A3%8F%E3%83%89%E3%83%A9%E6%BA%80%E8%B2%AB">裏ドラ満貫</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF">コミック</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E7%99%BE%E5%90%88">百合</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E9%9B%91%E8%AA%8C">雑誌</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E3%83%93%E3%83%83%E3%83%81">ビッチ</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E6%AF%8D">母</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E3%83%95%E3%83%AB%E3%82%AB%E3%83%A9%E3%83%BC">フルカラー</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E3%83%8F%E3%83%BC%E3%83%AC%E3%83%A0">ハーレム</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E5%90%8C%E4%BA%BACG">同人CG</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E7%86%9F%E5%A5%B3">熟女</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E5%AF%9D%E5%8F%96%E3%82%89%E3%82%8C">寝取られ</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B5%E3%82%B5%E3%83%B3%E3%83%80%E3%83%BC">アレクササンダー</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E8%8C%B6%E7%90%89">茶琉</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E5%BC%B7%E5%A7%A6">強姦</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E8%AA%BF%E6%95%99">調教</a></li>
+							<li><a href="http://dropbooks.tv/search/index/word:%E5%B7%A8%E6%A0%B9">巨根</a></li>
+			        </ul>
+   	</div>
+
+
+
+	<div class="box" style="margin-bottom:15px;">
+	<p class="title t_tag">最近登録されたタグ</p>
+        <ul class="tag_list">
+            <li><a href="http://dropbooks.tv/search/index/word:%E5%90%8C%E4%BA%BACG%E9%9B%86">同人CG集</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:HaRu">HaRu</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E5%A6%96%E7%8B%90">妖狐</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E4%BA%BA%E5%A4%96">人外</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E5%AF%9D%E5%8F%96%E3%82%89%E3%82%8C">寝取られ</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:NTR">NTR</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%81%84%E3%81%84%E5%8A%A0%E6%B8%9B%E3%81%AB%E3%82%AF%E3%82%BA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%B8%8A%E3%81%92%E3%82%8B%E3%81%AE%E3%82%84%E3%82%81%E3%82%8D%E3%82%88">いい加減にクズファイル上げるのやめろよ</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E6%97%A2%E5%87%BA">既出</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%83%90%E3%83%83%E3%82%AF">バック</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%83%95%E3%82%A7%E3%83%A9">フェラ</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E4%B8%AD%E5%87%BA%E3%81%97">中出し</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E6%AD%A3%E5%B8%B8%E4%BD%8D">正常位</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E9%A1%94%E5%B0%84">顔射</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E6%9D%BF%E5%A0%B4%E5%BA%83%E3%81%97">板場広し</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E5%8C%96%E7%89%A9%E8%AA%9E">化物語</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E9%9F%BF%E3%81%91!%E3%83%A6%E3%83%BC%E3%83%95%E3%82%A9%E3%83%8B%E3%82%A2%E3%83%A0">響け!ユーフォニアム</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%83%9D%E3%82%B1%E3%83%83%E3%83%88%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC">ポケットモンスター</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3">ポケモン</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%83%A1%E3%82%A4(%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3)">メイ(ポケモン)</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E6%88%90%E5%B9%B4%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF">成年コミック</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%83%AD%E3%82%B1%E3%83%83%E3%83%88%E3%83%A2%E3%83%B3%E3%82%AD%E3%83%BC">ロケットモンキー</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E6%9D%B1%E6%96%B9">東方</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%81%93%E3%81%A3%E3%81%A8%E3%82%93%E5%A0%82">こっとん堂</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:t%E5%A2%97%E6%AE%96%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">t増殖ファイル</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%83%9F%E3%82%B5%E3%82%AD%E3%82%AB%E3%83%9B%E3%80%82">ミサキカホ。</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E5%9C%B0%E5%91%B3%E3%81%A3%E5%A8%98">地味っ娘</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E7%8C%AB%E3%81%8B%E3%81%B6%E3%82%8A">猫かぶり</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E3%82%AE%E3%83%A3%E3%83%AB">ギャル</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E5%8F%A3%E6%AD%A2%E3%82%81">口止め</a></li>
+            <li><a href="http://dropbooks.tv/search/index/word:%E8%AA%98%E6%83%91">誘惑</a></li>
+        </ul>
+        <p>
+          <a href="http://dropbooks.tv/list/" class="over b_link">全ての登録タグを見る</a>
+        </p>
+  
+   	</div>
+
+
+	<div class="box">
+	<p class="title t_ranking">逆アクセスランキング</p>
+    	<table border="0" class="table_ranking">
+          <tbody><tr>
+            <th class="rank1">1</th>
+
+            <td><a href="http://doujin-matome.com/" target="_blank">同人まとめ</a><br>
+              <span class="small">[in 4183]</span></td>
+          </tr>
+          <tr>
+            <th class="rank2">2</th>
+
+            <td><a href="http://d-cotton.com/" target="_blank">同人こっとん</a><br>
+              <span class="small">[in 2060]</span></td>
+          </tr>
+          <tr>
+            <th class="rank3">3</th>
+
+            <td><a href="http://toumani.blog.fc2.com/" target="_blank">東方同人</a><br>
+              <span class="small">[in 772]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">4</th>
+
+            <td><a href="http://dou-ran.kir.jp/" target="_blank">同人WORLD!!</a><br>
+              <span class="small">[in 683]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">5</th>
+
+            <td><a href="http://mangarepos.com/" target="_blank">Manga Repository Raw Manga ...</a><br>
+              <span class="small">[in 614]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">6</th>
+
+            <td><a href="http://dojineromangaetc.blog.fc2.com/" target="_blank">WE LOVE 同人・エロマンガetc</a><br>
+              <span class="small">[in 543]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">7</th>
+
+            <td><a href="http://kankoremania.blog.fc2.com/" target="_blank">艦これ同人誌</a><br>
+              <span class="small">[in 492]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">8</th>
+
+            <td><a href="http://www.elog-ch.net/" target="_blank">エログちゃんねる</a><br>
+              <span class="small">[in 482]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">9</th>
+
+            <td><a href="http://e-hentaidb.com/" target="_blank">E-Hentaiまとめサイト</a><br>
+              <span class="small">[in 316]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">10</th>
+
+            <td><a href="http://mtimti.com/top.html" target="_blank">ムッチムッチ美少女専科</a><br>
+              <span class="small">[in 282]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">11</th>
+
+            <td><a href="http://xxx-video.us/" target="_blank">XXXvideo</a><br>
+              <span class="small">[in 212]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">12</th>
+
+            <td><a href="http://doucolle.net/" target="_blank">ドウコレ</a><br>
+              <span class="small">[in 172]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">13</th>
+
+            <td><a href="http://erozine.jp/" target="_blank">エロジン</a><br>
+              <span class="small">[in 142]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">14</th>
+
+            <td><a href="http://eromangatoudx.blog34.fc2.com/" target="_blank">無料同人エロマンガ島</a><br>
+              <span class="small">[in 134]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">15</th>
+
+            <td><a href="http://nukidou.livedoor.biz/" target="_blank">ヌキ同人～エロマンガ・同人誌～</a><br>
+              <span class="small">[in 119]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">16</th>
+
+            <td><a href="http://keep-out.livedoor.biz/" target="_blank">包茎少女BLOG</a><br>
+              <span class="small">[in 106]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">17</th>
+
+            <td><a href="http://hcomic.org/" target="_blank">HCライブラ</a><br>
+              <span class="small">[in 69]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">18</th>
+
+            <td><a href="http://gigamanga.blog56.fc2.com/" target="_blank">【GIGA】漫画コミック</a><br>
+              <span class="small">[in 62]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">19</th>
+
+            <td><a href="http://eromanga-love.com/" target="_blank">エロ漫画同人図書館</a><br>
+              <span class="small">[in 60]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">20</th>
+
+            <td><a href="http://kichiku.doujinbuta.tv/" target="_blank">鬼畜同人豚</a><br>
+              <span class="small">[in 58]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">21</th>
+
+            <td><a href="http://hcuration.blog.fc2.com/" target="_blank">エロキュレ</a><br>
+              <span class="small">[in 42]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">22</th>
+
+            <td><a href="http://blog.livedoor.jp/konyanookazu_adult" target="_blank">今夜のおかず.com</a><br>
+              <span class="small">[in 41]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">23</th>
+
+            <td><a href="http://sksk.doujinbuta.tv/" target="_blank">シコシコ同人豚</a><br>
+              <span class="small">[in 40]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">24</th>
+
+            <td><a href="http://nijipunioppai.com/" target="_blank">にじぷにおっぱい</a><br>
+              <span class="small">[in 35]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">25</th>
+
+            <td><a href="http://erodoujindoudeshou.blog.jp/" target="_blank">エロ同人どうでしょう</a><br>
+              <span class="small">[in 27]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">26</th>
+
+            <td><a href="http://moe.doujinko.tv/" target="_blank">萌同人庫</a><br>
+              <span class="small">[in 22]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">27</th>
+
+            <td><a href="http://megaland.80code.com/cgi-bin/index.html" target="_blank">エロマンガメガマンガ</a><br>
+              <span class="small">[in 21]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">28</th>
+
+            <td><a href="http://hentai-antenna.com/" target="_blank">R18 Hentai Antenna</a><br>
+              <span class="small">[in 20]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">29</th>
+
+            <td><a href="https://getpocket.com/" target="_blank">Pocket</a><br>
+              <span class="small">[in 15]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">30</th>
+
+            <td><a href="http://erodojin.click/" target="_blank">エロ同人クリック</a><br>
+              <span class="small">[in 14]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">31</th>
+
+            <td><a href="http://kaikatsu.jword.jp/" target="_blank">快活CLUB</a><br>
+              <span class="small">[in 13]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">32</th>
+
+            <td><a href="http://animemoelove072.info/" target="_blank">無料エロ漫画図書館</a><br>
+              <span class="small">[in 13]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">33</th>
+
+            <td><a href="http://kanekogazou.h.fc2.com/" target="_blank">金子部長はロリコン</a><br>
+              <span class="small">[in 13]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">34</th>
+
+            <td><a href="http://adultfound.blog.fc2.com/" target="_blank">同人アダルト情報館</a><br>
+              <span class="small">[in 12]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">35</th>
+
+            <td><a href="http://doucolle-kako.livedoor.biz/acrrank.html" target="_blank">どうコレ</a><br>
+              <span class="small">[in 12]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">36</th>
+
+            <td><a href="http://b.hatena.ne.jp/" target="_blank">はてなブックマーク</a><br>
+              <span class="small">[in 11]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">37</th>
+
+            <td><a href="http://www.ero-tuma.com/" target="_blank">エロ妻速報～人妻・お姉さん...</a><br>
+              <span class="small">[in 10]</span></td>
+          </tr>
+          <tr>
+            <th class="rank">38</th>
+
+            <td><a href="http://fanblogs.jp/kirokubu" target="_blank">スレッド記録部</a><br>
+              <span class="small">[in 10]</span></td>
+          </tr>
+        </tbody></table>
+		<p class="exp_ranking">
+			★24時間集計です
+		</p>
+     <a href="http://dropbooks.tv/help/#ranking" class="over b_link">逆アクセスランキングについて</a>
+	</div>
+
+
+<!--お知らせ-->
+	<div class="box">
+  <h2 class="t_news"><span class="news-title">NEWS</span>お知らせ・障害情報</h2>
+		<div class="news_list">
+<!--1-->
+			<p><span class="red">2017/02/27 08:48</span><br>本日午前8時ごろよりサイトが正常に表示されない不具合が発生しておりました。現在は、復旧しております。御迷惑をおかけ致しました。</p>
+			<p><span class="red">2017/02/24 23:26</span><br>現在、一部ユーザー様がアップロードして頂いた同人誌が一覧に反映されない、もしくは反映される時間が遅延している現象を確認しています。当該の現象に関して現在調査・修正を進めております。ユーザーの皆様にはご迷惑をおかけします。</p>
+			<p><span class="red">2017/02/23 12:05</span><br>一部ユーザー様の投稿された同人誌の日付が誤って投稿される不具合が発生しておりました。現在随時修正を行っております。ユーザーの皆様にはご迷惑をお掛けしております。</p>
+			<p><span class="red">2017/02/21 15:18</span><br>ネットワーク経路の影響で表示が遅かった問題ですが、現在は修正済みです。また更なる改善をしていきますのでこれからもdropbooksをよろしくお願いいたします。</p>
+			<p><span class="red">2017/02/16 01:06</span><br>ネットワーク経路の問題で一部夜間の表示が遅い現象が発生しているようです。
+
+改善に向けてサーバー調整中ですので今しばらくお待ち下さいませ。
+
+ご迷惑おかけいたします。</p>
+			<p><span class="red">2017/02/14 19:43</span><br>この1時間ほどサイト表示が遅くなる現象がございましたが、現在は復旧しております。
+ご迷惑をおかけして申し訳ございませんでした。</p>
+			<p><span class="red">2017/02/14 03:02</span><br>02:00頃よりPC版dropbooksサイト内のデザインが崩れて表示されておりました。現在は修正済みです。ユーザーの皆様にはご迷惑をおかけいたしました。</p>
+			<p><span class="red">2017/02/13 15:41</span><br>本日14:00頃よりPC版dropbooksのページ表記の乱れおよび、ソートが正しく行えない問題が発生しております。ただいま修正作業に行っております。ユーザーの皆様にはご迷惑をお掛けしております。</p>
+			<p><span class="red">2017/01/31 22:42</span><br>再度サーバーチューニングを行い夜間表示速度の改善を行いました。</p>
+			<p><span class="red">2017/01/31 15:26</span><br>夜間のサイトのページ表示速度を改善のためにサーバーの増強を致しました。</p>
+			<p><span class="red">2017/01/29 19:53</span><br>スマートフォンからPC版表示に切り替えた際、ご利用環境によって漫画のサンプル画像などが正常に表示されない現象を確認しておりますが、現在修正に向けて原因調査にあたっております。
+同現象が発生している方は、お手数ですがご利用ブラウザ・端末機種・通信回線（WiFi・4Gなど）についてお問い合わせフォームよりご連絡いただきますようよろしくお願い致します。</p>
+			<p><span class="red">2017/01/29 10:50</span><br>日本時間本日4時頃〜現在新着ファイルの更新が反映されない不具合を修正致しました。ご迷惑をお掛いたしました。</p>
+			<p><span class="red">2017/01/29 10:10</span><br>日本時間本日4時頃〜現在新着ファイルの更新が反映されなくなっています。
+修正中ですので今暫くお待ち下さいませ。</p>
+			<p><span class="red">2017/01/29 04:00</span><br>1月28日26時ごろより予定しておりましたメンテナンスが完了しました。ご協力ありがとうございました。</p>
+			<p><span class="red">2017/01/28 22:32</span><br>夜間にエラーが出て正常に表示されづらい現象について、現在改善に向けて対応中です。
+ご迷惑をおかけして申し訳ございませんが、近日中に解決する予定ですので、ご理解のほどよろしくお願い致します。</p>
+			<p><span class="red">2017/01/28 17:49</span><br>FILE NOTFOUNDと出てpdfやzipがDL出来ない問題を解消致しました。
+またアップロードしたファイルが反映されなかったり、反映されるまでに時間がかかる問題を大幅に改善致しました。
+
+サイトの表示が遅い問題については現在も取り組んでおります。</p>
+			<p><span class="red">2017/01/28 09:08</span><br>一部画像が表示されていないファイルが御座います。
+本日中に概ね改善見込みです。
+サーバー増強が少しずれ込んでいますが、システム含めて改善していっていますので今しばらくお時間下さいませ。</p>
+			<p><span class="red">2017/01/28 09:08</span><br>本日1月28日26時ごろよりサーバー増強に伴うメンテナンスを行います。ご迷惑をおかけいたしますが、ご理解とご協力の程よろしくお願いします。</p>
+			<p><span class="red">2017/01/28 09:04</span><br>サーバー調整に伴い、一部の環境で昨年11月のデータが表示される現象を改善致しました。ご迷惑をおかけしました。</p>
+			<p><span class="red">2017/01/28 07:47</span><br>サーバー調整に伴い、一部の環境で昨年11月のデータが表示される現象が発生しております。
+対応に当たっていますので、今しばらくお待ち下さいませ。</p>
+			<p><span class="red">2017/01/27 09:53</span><br>日本時間夜間において一部サイト表示にエラーが出ている現象が確認できています。
+サーバー増強で改善する見込みですので今しばらくお待ち下さいませ。</p>
+			<p><span class="red">2017/01/26 08:46</span><br>スマホ版の表示不具合が修正完了致しました。
+スマホユーザーの皆様にはご心配をおかけし申し訳ございませんでした。
+突然の閉鎖等は御座いませんのでご安心下さい。
+引き続き当サイトをよろしくお願いいたします。</p>
+			<p><span class="red">2017/01/26 08:45</span><br>日本時間1月25日22時頃〜26日9時頃迄スマートフォン版が表示されない不具合が発生しておりました。 ご迷惑をお掛けしました。</p>
+			<p><span class="red">2017/01/26 08:34</span><br>日本時間1月25日22時頃〜26日現在スマートフォン版が表示されないエラーが発生しています。
+修正に当たっていますので今しばらくお待ち下さいませ。</p>
+			<p><span class="red">2017/01/25 07:31</span><br>1週間以内にサーバーの大幅増強を行います。
+夜間のページ表示が重い現象が改善される見込みです。
+ファイルのDL速度につきましては細かく改善は行っていますが今回の増強予定に入っておりません。</p>
+			<p><span class="red">2017/01/24 10:41</span><br>新規ファイルをアップロードしても新着に反映されない現象を解消致しました。
+引き続き細かい修正を行っています。</p>
+			<p><span class="red">2017/01/22 02:03</span><br>本日1時30分頃から30分間ほどサイトが表示されない不具合が発生しておりました。ご迷惑をおかけいたしました。</p>
+			<p><span class="red">2017/01/10 18:24</span><br>本日1月10日の夜間は、アクセス過多によりサイトが正常に閲覧できない可能性がございます。ご迷惑をお掛け致しますがご理解願いします。</p>
+			<p><span class="red">2017/01/09 10:25</span><br>サーバーの大幅増強のため画像表示に一部不具合が発生していますが、全て改善に向かっております。
+夜間表示遅延やアップロード反映の遅延含めまして全力で対応しておりますので今しばらくお待ち下さいませ。</p>
+			<p><span class="red">2017/01/08 10:52</span><br>10本に1本程度の割合で新規アップロードしたファイルが反映されない現象が起きています。
+サーバー増強作業に伴いこちらも改善予定ですので今暫くお待ち下さい。
+アップロード完了から10分程度経っても反映されない場合は再度投稿をお試しください。
+ご迷惑おかけいたします。</p>
+			<p><span class="red">2017/01/07 01:22</span><br>ユーザーの皆様よりお声の多かったアップロードサイズの拡大を実施致しました。従来のファイルサイズ上限400MBから1GBのファイルまでアップロード可能です。これからもdropbooksをよろしくお願いします。</p>
+			<p><span class="red">2017/01/06 03:33</span><br>現在サーバー増強の為、一部ファイルの画像が表示されない状態になっております。ご迷惑をおかけ致しますが、ご理解の程よろしくお願いします。</p>
+			<p><span class="red">2017/01/03 21:00</span><br>アクセス増加により、サイトの画像表示に若干時間がかかりますので近日サーバーを増強致します。</p>
+			<p><span class="red">2017/01/02 15:46</span><br>12月30日頃より、経路の問題で一部のユーザーに画像が表示されたりされなかったりするようです。
+解決するための施策を行いますが最大で48時間程度かかる見込みです。</p>
+			<p><span class="red">2017/01/01 22:03</span><br>数日前より一部の環境の回線でサイトの画像が表示されていないようです。原因は調査中ですが一部修正してみましたので報告を聞きながら随時修正していきます。</p>
+			<p><span class="red">2016/12/30 17:59</span><br>少量ですが、一部のファイルでZIPやPDFをダウンロードしようとするとFILE NOTFOUNDが表示される場合がございます。
+こちらが表示されるファイルはファイルが何かしらの理由で破損しておりファイルがダウンロードできない状態ですので運営側では復旧出来ません。
+同一のファイルが投稿されるのをお待ちくださいませ。</p>
+			<p><span class="red">2016/12/30 09:38</span><br>一部の環境の方において画像が表示されない現象が発生しているようです。
+こちらで確認できるものについては全て修正済みですが、現在も表示されていない方はお問い合わせフォームよりどのように表示されていないか詳しい状況をお知らせ下さい。
+キャプ画も頂けると更に早く対応出来ます。</p>
+			<p><span class="red">2016/12/30 04:21</span><br>現在、一部環境から画像が表示されない不具合が確認されております。原因追求中のため、今しばらくお待ち下さい。</p>
+			<p><span class="red">2016/12/30 00:46</span><br>ページにエラーが出てDLが行えない方はキャッシュを一度クリアしてから読み込みなおして下さいませ。
+アップロードに失敗していますというエラーファイルにつきましては現在もダウンロードできません。</p>
+			<p><span class="red">2016/12/29 21:49</span><br>ファイルが正常にダウンロードできない不具合を修正致しました。現在は、復旧しております。ユーザーの皆様にはご迷惑をおかけしました。</p>
+<!--1-->
+		</div>
+<!--/お知らせ-->
+	</div>
+
+
+  <p class="banner"><a href="http://dropbooks.tv/smart/"><img src="./index_files/btn_smart.jpg" alt="スマートフォン版DROP BOOKS" width="270" height="100" class="over"></a></p>
+
+
+
+</div><!--/sidebar-->
+
+
+	</div>
+<!--/outline-->
+</div>
+<!--/wrap-->
+
+
+
+
+
+<!--/wrap-->
+
+
+<div id="footer">
+	<div id="footer_inner">
+
+<!--
+		<div class="footer_search">
+
+       <form action="/search" method="post">
+        <input type="search" placeholder="検索文字を入れてください" class="search_box" name="word" value="">
+         <input type="submit" value="" class="submitBtn">
+        </form>
+		</div>
+-->
+
+		<ul class="menu">
+			<li class="top"><a href="http://dropbooks.tv/"><span class="icon-home dropcolor"></span>Home</a></li>
+			<li class="mylist"><a href="http://dropbooks.tv/mybook/"><span class="icon-star-black-fivepointed-shape dropcolor"></span>MY本棚</a></li>
+			<li class="help"><a href="http://dropbooks.tv/help/"><span class="icon-question-button dropcolor"></span>Help</a></li>
+			<li class="rule"><a href="http://dropbooks.tv/rule/"><span class="icon-question-button dropcolor"></span>Terms</a></li>
+			<li class="delete"><a href="http://dropbooks.tv/delete/"><span class="icon-delete-button dropcolor"></span>Abuse</a></li>
+			<li class="contact"><a href="http://dropbooks.tv/contact/"><span class="icon-envelope dropcolor"></span>Contact</a></li>
+		</ul>
+
+
+		<div class="contents_sitetext">
+			<h2 class="t_about"><span class="drop-title">what's dropbooks?</span>ドロップブックスとは？</h2>
+			<p>
+			エロ同人誌・成人漫画専用の圧縮ファイル投稿サイト「ドロップブックス」をご覧いただきありがとうございます。<br>
+	ドロップブックスは一般ユーザー様・サイト管理者様に関わらず、どなたでも簡単にエロ同人誌・成人漫画の圧縮ファイルを自由に投稿・閲覧できるアダルト電子書籍専用投稿サイトです。<br>
+	書籍版Youtubeのようなものと思っていただければと思います。<br>
+	また簡単なお気に入り機能である「MY本棚」機能は、「前に見たあの作品をもう一度見たい！」という時に大助かりです♪ぜひ使ってみてくださいね！<br>
+	★MY本棚はInternetExplorer・GoogleChrome・Firefox・Safariの各最新バージョンのブラウザでご利用いただけます。<br>
+	★MY本棚の利用にはブラウザのCookie・javascriptの設定を有効にしておく必要がございます。<br>
+	<span class="red">★当サイトでは一部アダルト版ページにてアダルトコンテンツを含んでおります。<br>そのため、アダルト版ドロップブックスは18歳未満の方のご利用をお断りしております。</span>
+			</p>
+		</div>
+
+
+      <p id="copyright">Copyright ドロップブックス all rights reserved.</p>
+	</div>
+
+</div>
+
+
+
+</div><!--/container-->
+
+
+
+<div id="topcontrol" title="Scroll Back to Top" style="position: fixed; bottom: 190px; right: 10px; opacity: 0; cursor: pointer;"><img src="./index_files/b_top.png" style="width:70px; height:70px"></div></body></html>

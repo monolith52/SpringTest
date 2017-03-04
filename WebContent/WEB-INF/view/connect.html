@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!--/*-->
+<p>this is <span>test</span></p>
+<!--*/-->
+<table border="1">
+	<tr>
+		<td>名前</td>
+		<td>年齢</td>
+	</tr>
+	<tr th:each="user : ${users}">
+		<td th:text="${user.get('name')}">zzz</td>
+		<td th:text="${user.get('age')}">000</td>
+	</tr>
+	<!--/*-->
+	<tr>
+		<td>xxx</td>
+		<td>111</td>
+	</tr>
+	<tr>
+		<td>xxx</td>
+		<td>111</td>
+	</tr>
+	<tr>
+		<td>xxx</td>
+		<td>111</td>
+	</tr>
+	<!--*/-->
+</table>
+</body>
+</html>
